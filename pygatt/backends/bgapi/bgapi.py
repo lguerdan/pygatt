@@ -199,6 +199,8 @@ class BGAPIBackend(BLEBackend):
         self.send_command(CommandBuilder.system_reset(0))
         self._ser.flush()
         self._ser.close()
+        
+        time.sleep(2)
 
         self._open_serial_port()
         self._receiver = threading.Thread(target=self._receive)
@@ -749,7 +751,11 @@ class BGAPIBackend(BLEBackend):
 
     def _ble_rsp_sm_get_bonds(self, args):
         """
-        Handles the response for the start of stored bond enumeration. Sets
+        Handles the response for the 
+        
+        
+        
+        of stored bond enumeration. Sets
         self._num_bonds to the number of stored bonds.
 
         args -- dictionary containing the number of stored bonds ('bonds'),
